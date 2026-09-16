@@ -12,7 +12,13 @@ Superhuman style spec (`~/Design Related Resources/Superhuman/Superhuman Style R
 
 Sections: announcement pill → sticky blurred nav → full-bleed photo hero with centered 64px headline + two floating glass cards (hidden below 1100px/900px) → 6-cell trust strip → specialties tab strip (4 functional tabs) → 4-step "how it works" → umber full-bleed band with layered translucent rects + Caveat script → about with portrait → FAQ `<details>` accordion → gradient band + demo form → espresso footer with 988 crisis line.
 
-Form is demo-only: JS swaps in a success panel, posts nowhere. Wire to Netlify Forms if this ships.
+Form is demo-only: JS swaps in a success panel, posts nowhere. It stays demo-only even though the site is live, because the brand is fictional; wire it to Netlify Forms only if a real practice adopts the page.
+
+## Deploy (live since 2026-09-16)
+
+- **GitHub:** https://github.com/ronnytiburcio/willow-sage-therapy-demo — PUBLIC repo (MIT license, README invites people to grab it). Tracks index.html, img/, README, LICENSE, CLAUDE.md. `.gitignore` excludes the walkthrough video (`*.mp4`/`*.mov`), `AGENTS.md`, node_modules, .DS_Store. Never commit the video: it is 1.3 GB of Ronny's screen and face.
+- **Netlify:** site `willow-sage-therapy`, id `26d10b3b-06ec-49e1-b7be-99fbddb5f96e`, team ronnytiburcio, live at https://willow-sage-therapy.netlify.app. NOT linked to GitHub for auto-deploy (CLI repo linking needs the interactive flow); deploys are manual. To redeploy after edits: copy `index.html` + `img/` into a clean temp dir and run `netlify deploy --prod --dir . --site 26d10b3b-06ec-49e1-b7be-99fbddb5f96e` from there. Deploy from a clean dir, not this folder: the CLI would upload CLAUDE.md/AGENTS.md (it does not respect all .gitignore entries), and the first deploy did exactly that until it was replaced. Also push the same edits to GitHub `main`.
+- The `--site` flag needs the site ID, not the name (name lookup 404s on this CLI version). `netlify sites:create` needs `--account-slug ronnytiburcio` or it dies on the interactive team prompt.
 
 ## Preview / verify
 Open `index.html` directly (relative img paths) or any static server. The in-app browser pane won't repaint below the fold; full-page proof shots came from puppeteer-core headless Chrome in the session scratchpad (`shots.mjs`: 1280px + 390px viewports, fullPage, scroll-through first so lazy images load, form submit + tab click assertions).
